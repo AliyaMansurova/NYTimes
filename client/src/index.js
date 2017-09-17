@@ -1,7 +1,9 @@
 import './index.less';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './js/components/App/App.js';
+import 'babel-polyfill';
+
+import App from './js/components/App';
 
 ReactDOM.render(
 <App />,
