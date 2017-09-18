@@ -36,7 +36,7 @@ class PaginationContainer extends React.Component {
                        nextLabel={"next"}
                        breakLabel={<a>...</a>}
                        breakClassName={"break-me"}
-                       pageCount={ pageSize ? pageSize : 1 }
+                       pageCount={ pageSize ? ( pageSize < 200 ? pageSize : 200) : 1 }
                        marginPagesDisplayed={2}
                        pageRangeDisplayed={5}
                        onPageChange={(value) => this.handlePageClick(value)}

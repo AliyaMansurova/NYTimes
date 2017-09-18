@@ -4,12 +4,12 @@ import './ArticleContainer.less';
 class Article extends Component {
   render() {
     const date = this.props.title.pub_date ? (this.props.title.pub_date).slice(0, 10) :'';
-    const image = this.props.title.multimedia ? `http://www.nytimes.com/${this.props.title.multimedia[1].url}` : '';
+    const image = this.props.title.multimedia[2] ? `http://www.nytimes.com/${this.props.title.multimedia[2].url}` : '';
     return (
         <div className="articleContainer">
           <div className="wrap">
             {image ?(
-                <a><img src={image}></img></a>
+                <a><img className="image" src={image}></img></a>
             ):(<a></a>)
             }
             <div className="article">
