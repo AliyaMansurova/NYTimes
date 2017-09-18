@@ -35,20 +35,24 @@ export const getTitles = (search, page) => {
 
 // ------------- REDUCER ----------------
 
-const search = (state= defaultState, action) => {
+const search = (state = defaultState, action) => {
   switch (action.type) {
-    case GET_TITLES_SUCCESS: {
+    case GET_TITLES_SUCCESS:
       return {
         list: action.list.docs,
         meta: action.list.meta,
         error: ''
       };
-    }
-    case GET_TITLES_FAILURE: {
+
+    case GET_TITLES_FAILURE:
       return {
-        error: action.error
+        list: [],
+        meta: {
+          hits: 0
+        },
+        error: action.error.message
       };
-    }
+
     default:
       return state;
   }

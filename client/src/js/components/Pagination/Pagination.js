@@ -34,7 +34,7 @@ class PaginationContainer extends React.Component {
         <div className="myPagination">
         <ReactPaginate previousLabel={"previous"}
                        nextLabel={"next"}
-                       breakLabel={<a href="">...</a>}
+                       breakLabel={<a>...</a>}
                        breakClassName={"break-me"}
                        pageCount={ pageSize ? pageSize : 1 }
                        marginPagesDisplayed={2}

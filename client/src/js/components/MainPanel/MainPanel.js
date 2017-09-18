@@ -1,8 +1,8 @@
 
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router';
-import styles from './MainPanel.less';
-//import ArticleContainer from '../ArticleContiner';
+import  './MainPanel.less';
+import ArticleContainer from '../ArticleContainer';
 
 const MainPanel = () => (
     <section className="wrapper">
@@ -11,12 +11,12 @@ const MainPanel = () => (
             exact
             path="/search"
             component={() => (
-                <div>
-                 Articles
+                <div className="wrapper">
+                  <ArticleContainer />
                 </div>)}
         />
         <Route exact path="/">
-          <Redirect to={{ pathname: '/search', search: '?searchBar=&page=1' }} />
+          <Redirect to={{ pathname: '/search', search: '?searchBar=&page=0' }} />
         </Route>
       </Switch>
     </section>

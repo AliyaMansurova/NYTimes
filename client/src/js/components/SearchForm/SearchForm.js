@@ -34,10 +34,10 @@ class SearchForm extends React.Component {
   }
 
   render() {
-    const page = queryString.parse(this.props.routeLocation.search).page;
+    const {searchBar, page} = queryString.parse(this.props.routeLocation.search);
     return (
         <div className="searchForm">
-          <input className="input" type="search" id="search" onChange={(e) =>this.handleChange(e.target.value)} />
+          <input className="input" type="search" id="search" defaultValue={searchBar} onChange={(e) =>this.handleChange(e.target.value)} />
           <Link
               to={{
                 pathname: '/search',
@@ -45,7 +45,7 @@ class SearchForm extends React.Component {
               onClick={() => this.props.getTitles(this.state.value, page)}
               replace
           >
-            <button type="submit">ok</button>
+            <button className="search" type="submit">Search</button>
           </Link>
         </div>
     );

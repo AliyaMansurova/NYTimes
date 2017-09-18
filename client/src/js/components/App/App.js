@@ -21,7 +21,7 @@ export default class App extends Component {
           <Route
               path="/"
               component={() => (
-                  <div >
+                  <div className="container">
                     <Header />
                     <MainPanel/>
                     {history.location.pathname === '/search' ? <PaginationContainer /> : null}
