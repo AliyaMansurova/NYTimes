@@ -21,6 +21,12 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 class PaginationContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      page: queryString.parse(history.location.search).page
+    };
+  }
 
   handlePageClick (value){
     const search = queryString.parse(history.location.search).searchBar;
@@ -42,7 +48,8 @@ class PaginationContainer extends React.Component {
                        onPageChange={(value) => this.handlePageClick(value)}
                        containerClassName={"pagination"}
                        subContainerClassName={"pages pagination"}
-                       activeClassName={"active"} />
+                       activeClassName={"active"}
+        />
         </div>
     );
   }

@@ -22,8 +22,8 @@ class ArticleContainer extends Component {
     const titles = this.props.titles;
     return (
         <div>
-          {titles ? titles.map(title => (
-          <Article title={title}/>
+          {titles ? titles.map((title,index) => (
+          <Article key ={index} title={title}/>
           )):(<div>Not</div>)
           }
         </div>

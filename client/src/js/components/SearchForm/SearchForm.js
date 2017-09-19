@@ -21,7 +21,7 @@ class SearchForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: ''
+      value: queryString.parse(this.props.routeLocation.search).searchBar
     };
     this.handleChange = this.handleChange.bind(this);
   }
@@ -32,11 +32,14 @@ class SearchForm extends React.Component {
       value: newValue
     });
   }
+  componentDidMount() {
+    this.props.getTitles(this.state.value, queryString.parse(this.props.routeLocation.search).page);
+  }
 
   render() {
     const {searchBar, page} = queryString.parse(this.props.routeLocation.search);
     return (
-        <div className="searchForm">
+        <form className="searchForm">
           <input className="input" type="search" id="search" defaultValue={searchBar} onChange={(e) =>this.handleChange(e.target.value)} />
           <Link
               to={{
@@ -47,7 +50,7 @@ class SearchForm extends React.Component {
           >
             <button className="search" type="submit">Search</button>
           </Link>
-        </div>
+        </form>
     );
   }
 }
