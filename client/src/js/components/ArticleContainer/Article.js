@@ -4,7 +4,7 @@ import './ArticleContainer.less';
 class Article extends Component {
   render() {
     const date = this.props.title.pub_date ? (this.props.title.pub_date).slice(0, 10) :'';
-    const image = this.props.title.multimedia[0] ? `http://www.nytimes.com/${this.props.title.multimedia[0].url}` : '';
+    const image = this.props.title.multimedia[0] ? `http://www.nytimes.com/${this.props.title.multimedia[0].url}` : '/img/default.jpg';
     return (
         <div className="articleContainer">
           <div className="wrap">

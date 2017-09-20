@@ -13,9 +13,9 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getTitles(search,page) {
+  getTitles(search,page,sort) {
     dispatch(
-        getTitles(search,page)
+        getTitles(search,page,sort)
     );
   },
 });
@@ -30,8 +30,9 @@ class PaginationContainer extends React.Component {
 
   handlePageClick (value){
     const search = queryString.parse(history.location.search).searchBar;
-    history.push(`search?searchBar=${search}&page=${value.selected}`);
-    this.props.getTitles(search, value.selected);
+    const sort = queryString.parse(history.location.search).sort;
+    history.push(`search?searchBar=${search}&page=${value.selected}&sort=${sort}`);
+    this.props.getTitles(search, value.selected,sort);
   }
 
   render() {
@@ -49,6 +50,7 @@ class PaginationContainer extends React.Component {
                        containerClassName={"pagination"}
                        subContainerClassName={"pages pagination"}
                        activeClassName={"active"}
+                       initialPage={0}
         />
         </div>
     );

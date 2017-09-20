@@ -10,9 +10,9 @@ export const mapStateToProps = (state) => ({
 });
 
 export const mapDispatchToProps = (dispatch) => ({
-  getTitles(search,page) {
+  getTitles(search,page,sort) {
     dispatch(
-        getTitles(search,page)
+        getTitles(search,page,sort)
     );
   },
 });
@@ -33,22 +33,22 @@ class SearchForm extends React.Component {
     });
   }
   componentDidMount() {
-    this.props.getTitles(this.state.value, queryString.parse(this.props.routeLocation.search).page);
+    this.props.getTitles(this.state.value, queryString.parse(this.props.routeLocation.search).page, queryString.parse(this.props.routeLocation.search).sort);
   }
 
   render() {
-    const {searchBar, page} = queryString.parse(this.props.routeLocation.search);
+    const {searchBar, page, sort} = queryString.parse(this.props.routeLocation.search);
     return (
         <form className="searchForm">
-          <input className="input" type="search" id="search" defaultValue={searchBar} onChange={(e) =>this.handleChange(e.target.value)} />
+          <input type="text" id="search" defaultValue={searchBar} onChange={(e) =>this.handleChange(e.target.value)} />
           <Link
               to={{
                 pathname: '/search',
-                search: `?searchBar=${this.state.value}&page=${page}`}}
-              onClick={() => this.props.getTitles(this.state.value, page)}
+                search: `?searchBar=${this.state.value}&page=${page}&sort=${sort}`}}
+              onClick={() => this.props.getTitles(this.state.value, page, sort)}
               replace
           >
-            <button className="search" type="submit">Search</button>
+            <button  type="submit">Search</button>
           </Link>
         </form>
     );

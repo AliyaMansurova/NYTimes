@@ -2,14 +2,14 @@ import React from 'react';
 import './Header.less';
 import SearchForm from './../SearchForm';
 import WeatherWidget  from '../Weather/Weather';
+import Links from '../Links/Links';
 export const Header = () => {
   return (
      <div className="header">
-       <img className="logo" src="/img/NY.png" alt="" />
-       <hr className="bookends" />
        <WeatherWidget pollInterval={60000}/>
-       <hr className="bookends" />
+       <img className="logo" src="/img/NY.png" alt="" />
        <SearchForm/>
+       <Links />
      </div>
   );
 };

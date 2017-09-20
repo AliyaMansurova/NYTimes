@@ -16,7 +16,7 @@ const MainPanel = () => (
                 </div>)}
         />
         <Route exact path="/">
-          <Redirect to={{ pathname: '/search', search: '?searchBar=&page=0' }} />
+          <Redirect to={{ pathname: '/search', search: '?searchBar=&page=0&sort=' }} />
         </Route>
       </Switch>
     </section>

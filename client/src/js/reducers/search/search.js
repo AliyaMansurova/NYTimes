@@ -16,10 +16,13 @@ const defaultState = {
 };
 
 // ------------ ACTION CREATORS --------------
-export const getTitles = (search, page) => {
+export const getTitles = (search, page, sort) => {
   console.log("in action");
-  console.log(`page: ${page}, search:${search}`);
-  let url = `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=c01b0d2bc5904984b559369be186cf73&page=${page}&q=${search}`;
+  console.log(`page: ${page}, search:${search}, sort: ${sort}`);
+
+  let url = sort
+      ? `https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=c01b0d2bc5904984b559369be186cf73&page=${page}&q=${search}&sort=${sort}`
+      :`https://api.nytimes.com/svc/search/v2/articlesearch.json?api-key=c01b0d2bc5904984b559369be186cf73&page=${page}&q=${search}`
   return (dispatch) =>
       axios.get(url).then((response) => {
         console.log(response.data.response);
